@@ -18,6 +18,7 @@ model User{
   accountId String @unique
   hash_password String
 
+  role String
   firstName String
   lastName String
   email String 

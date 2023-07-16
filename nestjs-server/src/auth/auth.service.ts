@@ -41,9 +41,10 @@ export class AuthService {
                     email:dto.email,
                     firstName:dto.firstName,
                     lastName:dto.lastName,
+                    role: "user"
                 },
             })
-            return this.signToken(user.id, user.accountId, user.email)
+            return this.signToken(user.id, user.accountId, user.email, user.role)
 
         }catch(error){
             if (error instanceof Prisma.PrismaClientKnownRequestError){
@@ -71,15 +72,16 @@ export class AuthService {
             throw new ForbiddenException("Password incorrect")
         }
 
-        return this.signToken(user.id,user.accountId, user.email)
+        return this.signToken(user.id,user.accountId, user.email, user.role)
     }
 
     //sign JWT Token
-    async signToken(userId: number, accountId: string, email: string): Promise<{access_token: string}>{
+    async signToken(userId: number, accountId: string, email: string, role:string): Promise<{access_token: string}>{
         const payload={
             sub: userId,
             accountId: accountId,
-            email: email
+            email: email,
+            role: role
         }
         const secret= this.config.get("JWT_SECRET")
         const token= await this.jwt.signAsync(payload,{

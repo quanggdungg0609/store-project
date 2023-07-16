@@ -21,9 +21,5 @@ export class AuthDto{
     @IsString()
     lastName: string
 
-
-    phoneNumber: string
-
-
-    address: string
+    
 }
