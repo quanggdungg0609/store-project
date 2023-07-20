@@ -6,8 +6,44 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors:{
+        'copper-rust': {
+          '50': '#fcf3f6',
+          '100': '#fae9f0',
+          '200': '#f6d4e1',
+          '300': '#f2bed1',
+          '400': '#e581a3',
+          '500': '#d95b83',
+          '600': '#c63c60',
+          '700': '#ab2b49',
+          '800': '#8d273e',
+          '900': '#762537',
+          '950': '#47101c',
+        },
+        'pink-pastel':{
+          '100':"#F9F5F6",
+          '200':"#F8E8EE",
+          '300':"#FDCEDF",
+          '400':"#F2BED1"
+        },
+        'milano-red': {
+          '50': '#fff1f1',
+          '100': '#ffdfdf',
+          '200': '#ffc4c4',
+          '300': '#ff9b9b',
+          '400': '#ff6262',
+          '500': '#ff3131',
+          '600': '#f01212',
+          '700': '#bd0a0a',
+          '800': '#a70d0d',
+          '900': '#8a1212',
+          '950': '#4b0404',
+      },
+      
+    },
     extend: {
       backgroundImage: {
+        
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',

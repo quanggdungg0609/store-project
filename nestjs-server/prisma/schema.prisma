@@ -10,22 +10,68 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User{
-  id Int @id @default(autoincrement())
+model User {
+  id       Int      @id @default(autoincrement())
   createAt DateTime @default(now())
   updateAt DateTime @updatedAt
 
-  accountId String @unique
+  accountId     String @unique
   hash_password String
 
-  role String
+  role      String
   firstName String
-  lastName String
-  email String 
+  lastName  String
+  email     String
 
   phoneNumber String?
-  address String?
-  
+  address     String?
+
+  refreshTokens RefreshToken?
+  Order         Order[]
 
   @@map("users")
+}
+
+model Product {
+  id       Int      @id @default(autoincrement())
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  name        String
+  brandName   String
+  type        String
+  description String
+  tag         String[]
+  buyPrice    Int
+  sellPrice   Int
+  buyFrom     String
+  
+  Order       Order[] 
+
+  @@map("products")
+}
+
+model Order {
+  id       Int      @id @default(autoincrement())
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  accountId String      
+  products  Product[]
+  user User @relation(fields: [accountId], references: [accountId])
+
+  @@map("orders")
+}
+
+model RefreshToken {
+  id       Int      @id @default(autoincrement())
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  accountId    String @unique
+  refreshToken String
+
+  user User @relation(fields: [accountId], references: [accountId])
+
+  @@map("refreshtokens")
 }
