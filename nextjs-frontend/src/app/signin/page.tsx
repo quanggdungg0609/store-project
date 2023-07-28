@@ -1,19 +1,22 @@
-"use client"
+
+import {headers} from "next/headers"
 import FormSection from "./components/FormSection/FormSection"
-import { motion } from "framer-motion"
+import FormSectionMobile from "./components/FormSectionMobile/FormSectionMobile"
+
 export default function SignIn(){
+    const headersList= headers()
+    const userAgent= headersList.get("user-agent")
 
-
+    //check if is mobile view
+    let isMobileView= userAgent!.match(
+        /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+    )
+    
     return (
-        <motion.main 
+        <div
             className=" flex justify-center items-center w-screen h-screen"
-                initial={{y:50, opacity:0}}
-                animate={{y:0, opacity:1}}
-                transition={{duration:0.6, delay:0.3, delayChildren: 0.3, staggerChildren: 0.05}}
         >
-            
-            <FormSection/>  
-
-        </motion.main>
+            {isMobileView?<FormSectionMobile/>:<FormSection/>}
+        </div>
     )
 }

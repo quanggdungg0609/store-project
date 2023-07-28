@@ -55,8 +55,9 @@ const FormSection = () => {
     }
     return (
         <section 
-            className=" bg-gradient-to-b from-pink-pastel-100 from-30% via-copper-rust-200 to-pink-pastel-300
+            className=" bg-gradient-to-b from-pink-pastel-200 from-30% via-copper-rust-300 to-pink-pastel-400
                         w-3/5 h-4/5 max-h-[480px] max-w-[720px] min-h-[480px] min-w-[720px] rounded-2xl shadow-2xl 
+                        border border-copper-rust-600
                         flex flex-row  items-center px-4">
                 <motion.div
                     layout
@@ -64,7 +65,7 @@ const FormSection = () => {
                         order: formState==="login"?1:2
                     }}
                     transition={{ type:"spring", duration:2, damping:15, staggerChildren:0.5}}
-                    className=" bg-gradient-to-br from-pink-pastel-400  to-copper-rust-400
+                    className=" bg-milano-red-300 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40
                                 w-3/6 h-[110%] rounded-lg shadow-2xl z-20
                                 flex flex-col justify-center items-center"
                     id='choose-form-section'
@@ -94,7 +95,8 @@ const FormSection = () => {
                         className="flex flex-col items-center justyfi-center"
                     >
                         <h1 
-                            className={`${DancingScriptFont.className} text-5xl italic text-copper-rust-900 select-none cursor-default`}
+                            className={`${DancingScriptFont.className} text-5xl italic text-copper-rust-900 select-none cursor-default drop-shadow-xl`}
+
                         >DH Paris
                         </h1>
             

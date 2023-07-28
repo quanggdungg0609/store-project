@@ -4,7 +4,7 @@ import { Prisma } from "@prisma/client"
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ConfigService } from "@nestjs/config"
 import { JwtService } from '@nestjs/jwt';
-import { AuthDto, SignInDto } from './dto';
+import { AuthDto, RefreshTokenDto, SignInDto } from './dto';
 
 
 
@@ -124,15 +124,15 @@ export class AuthService {
         
     }
 
-    async refreshToken(refreshToken:string){
+    async refreshToken(dto: RefreshTokenDto){
         try{
-            const verify= await this.jwt.verifyAsync(refreshToken,{
+            const verify= await this.jwt.verifyAsync(dto.refresh_token,{
                 secret: this.config.get("JWT_SECRET")
             })
             const checkExistToken= await this.prisma.refreshToken.findUnique({
                 where:{
                     accountId:verify.accountId,
-                    refreshToken:refreshToken
+                    refreshToken:dto.refresh_token
                 }
             })
             if (checkExistToken){

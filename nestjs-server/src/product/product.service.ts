@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { BadRequestException, ForbiddenException, HttpCode, HttpStatus, Injectable, ServiceUnavailableException, } from '@nestjs/common';
 import { ProductDto } from './dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
@@ -19,17 +19,23 @@ export class ProductService {
             if (product){
                 throw new ForbiddenException("Item exist")
             }
-            console.log(typeof dto.buyPrice)
-            console.log(typeof dto.sellPrice)
-            
+            let tags=[]
             // if product non-exist
-    
+
+            //if request only have 1 tag, add tag into a array
+            if(typeof dto.tag==='string'){
+                tags=[dto.tag]
+            }
+            else{
+                tags=dto.tag
+            }
+            //create product
             await this.prisma.product.create({
                 data:{
                     name:dto.name,
                     brandName: dto.brandName,
                     type:dto.type,
-                    tag:dto.tag,
+                    tag:tags,
                     buyFrom:dto.buyFrom,
                     sellPrice:Number(dto.sellPrice),
                     buyPrice:Number(dto.buyPrice),
@@ -38,7 +44,7 @@ export class ProductService {
             })
         }
         catch(error){
-            console.error(error)
+            throw new ServiceUnavailableException("Can not create new product")
         }
         return JSON.stringify(dto)
     }
