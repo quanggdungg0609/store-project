@@ -1,5 +1,10 @@
+body {
+    overflow: hidden; /* Hide scrollbars */
+}
+
 .main-admin{
     background-image: url("../../../public/background/10945476.jpg");
-    background-size: 100%;
+    background-size:cover;
+    background-repeat: no-repeat;
 }
 

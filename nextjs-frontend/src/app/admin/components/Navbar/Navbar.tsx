@@ -62,6 +62,7 @@ const Navbar = () => {
                   >
                    <Link  href={item.route}
                           className={`w-full h-[40px] relative ${isActive(item.route) &&"text-copper-rust-200"}`}
+                          
                     >
                       <FontAwesomeIcon icon={item.icon} size='lg' className={`ml-1 mr-2 `}/>
                       <span className={``}>{item.text}</span>
