@@ -13,14 +13,14 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({children,}: { children: React.ReactNode}){
     return(
-        <section className="flex flex-row main-admin w-screen h-screen">
+        <section className="flex flex-row w-screen h-screen
+                            
+        ">
             <Navbar/>
-            {/* <AnimatePresence mode="wait"> */}
                 <div className='w-full h-screen'>
                     {children}
                 </div>
 
-            {/* </AnimatePresence> */}
             
 
         </section>

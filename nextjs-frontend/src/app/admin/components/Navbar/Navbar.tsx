@@ -20,6 +20,7 @@ import Logo from "../../../../../public/assets/logo-no-background.svg"
 
 //routes
 import { adminRoute } from './route'
+import CurrentUserComponent from '../CurrentUserComponent/CurrentUserComponent'
 
 //font
 const MitrFont=Mitr({
@@ -36,7 +37,7 @@ const Navbar = () => {
       return pathName === route;
     };
     return (
-      <div className="flex flex-col h-screen w-1/6 items-center pt-4 px-2 max-w-[200px] min-w-[200px]
+      <div className="relative flex flex-col h-screen w-1/6 items-center pt-4 px-2 max-w-[200px] min-w-[200px]
                       
       ">
          <Image src={Logo}
@@ -46,41 +47,36 @@ const Navbar = () => {
           />
 
           <div className='flex items-start w-full select-none'>
-            <ul className={`${MitrFont.className} w-full flex flex-col gap-8 items-start text-copper-rust-700 text-lg subpixel-antialiased uppercase`}>
+            <ul className={`${MitrFont.className} ml-2 w-full flex flex-col gap-8 items-start text-copper-rust-700 text-lg subpixel-antialiased uppercase`}>
               {adminRoute.map((item)=>{
                 return(
-                  <motion.li
-                    key={item.text} 
-                    
-                    initial={{ backgroundColor: "transparent", x: 0 }}
-                    animate={{
-                      backgroundColor: isActive(item.route) ? "#8d273e" : "transparent",
-                      borderRadius:"20px",
-                      x: isActive(item.route) ? 15 : 0,
-                    }}
-                    className='p-3 drop-shadow-lg'
+                  <li
+                    key={item.text}
+                    className='relative flex justify-center items-center '
                   >
                    <Link  href={item.route}
-                          className={`w-full h-[40px] relative ${isActive(item.route) &&"text-copper-rust-200"}`}
-                          
-                    >
-                      <FontAwesomeIcon icon={item.icon} size='lg' className={`ml-1 mr-2 `}/>
-                      <span className={``}>{item.text}</span>
-            
+                          className={`w-full h-[40px"}`}
+                    >    
+                      <motion.span animate={{color:pathName===item.route? "#fff": "#ab2b49"}}
+                                  transition={{duration:0.35, ease:[0.43, 0.13, 0.23, 0.96], delay:0.05}}
+                      >
+                        <FontAwesomeIcon icon={item.icon} size='lg' className={`ml-1 mr-2`}/>
+                        {item.text}
+                      </motion.span>
                     </Link>
-                  </motion.li>
+                    {pathName===item.route && 
+                      <motion.div layoutId='underline' 
+                                  className='absolute -z-10 -top-2  -left-1 w-[110%] h-[45px] bg-copper-rust-500 rounded-xl'
+                                  transition={{type:'spring', bounce:0.25, duration:0.5}}>
+                      </motion.div>}
+
+                  </li>
                 )
               })}
               
             </ul>
           </div>
-          <h2 className={`${MitrFont.className} absolute bottom-8 left-7 flex flex-row
-                           text-copper-rust-700 subpixel-antialiased uppercase text-lg 
-                           drop-shadow-md leading-tight cursor-pointer select-noneS`}
-          >
-            <FontAwesomeIcon icon={faRightFromBracket} size='lg' className='mr-2'/> 
-            Log out
-          </h2>
+            <CurrentUserComponent/>
       </div>
     )
 }
