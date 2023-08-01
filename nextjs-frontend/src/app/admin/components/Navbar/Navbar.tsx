@@ -46,8 +46,8 @@ const Navbar = () => {
                 className='drop-shadow-sm mx-2 mb-16'
           />
 
-          <div className='flex items-start w-full select-none'>
-            <ul className={`${MitrFont.className} ml-2 w-full flex flex-col gap-8 items-start text-copper-rust-700 text-lg subpixel-antialiased uppercase`}>
+          <div className='flex items-center  w-full select-none'>
+            <ul className={`${MitrFont.className} w-full flex flex-col gap-8 items-center justify-center text-copper-rust-700 text-lg subpixel-antialiased uppercase`}>
               {adminRoute.map((item)=>{
                 return(
                   <li

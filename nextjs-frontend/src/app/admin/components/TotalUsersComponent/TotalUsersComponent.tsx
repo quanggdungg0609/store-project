@@ -4,7 +4,7 @@ import { FcConferenceCall } from "react-icons/fc"
 
 const TotalUsersComponent = () => {
   return (
-    <div className='w-1/3 min-w-[400px] max-w-[402px] h-full bg-waikawa-gray-100 rounded-3xl p-4
+    <div className='w-1/3  h-full bg-waikawa-gray-100 rounded-3xl p-4
                         flex flex-row justify-center items-center shadow-2xl'
       
         >
