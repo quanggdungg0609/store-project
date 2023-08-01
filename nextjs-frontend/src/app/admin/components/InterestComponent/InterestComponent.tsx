@@ -6,7 +6,7 @@ const InterestComponent = () => {
     let interest:number= 1900000
     let interestFormated:string= interest.toLocaleString('en-us', {minimumFractionDigits:0})
     return (
-        <div className='w-1/3 min-w-[400px] max-w-[402px] h-full bg-waikawa-gray-100 rounded-3xl p-4
+        <div className='w-1/3  h-full bg-waikawa-gray-100 rounded-3xl p-4
                         flex flex-row justify-center items-center shadow-2xl'
         >
             <div className='flex flex-col justify-center gap-2 w-[250px]'>

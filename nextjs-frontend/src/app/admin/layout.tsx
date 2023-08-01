@@ -6,6 +6,8 @@ import "./dashboard.css"
 import Navbar from "./components/Navbar/Navbar"
 import PageWrapper from './components/PageWrapper/PageWrapper'
 import { motion,AnimatePresence } from 'framer-motion'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 export const metadata: Metadata = {
     title: 'DH Paris | Admin'
@@ -17,9 +19,11 @@ export default function AdminLayout({children,}: { children: React.ReactNode}){
                             
         ">
             <Navbar/>
+            <Suspense fallback={<Loading/>}>
                 <div className='w-full h-screen'>
                     {children}
                 </div>
+            </Suspense>
 
             
 

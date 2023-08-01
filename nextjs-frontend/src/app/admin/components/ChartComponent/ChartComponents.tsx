@@ -48,13 +48,13 @@ const CustomYAxisTick = (props:any) => {
 
 const ChartComponents = () => {
     return (
-        <div className='w-2/3 h-full bg-copper-rust-100 rounded-3xl max-w-[808px] min-w-[808px]
-                        max-h-[454px] min-h-[450px]
+        <div className='w-2/3 h-full bg-waikawa-gray-100 rounded-3xl 
+                        flex justify-center items-center
                         shadow-2xl'
         >
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" >
                 <LineChart
-                    width={650}
+                    width={600}
                     height={350}
                     data={data}
                     margin={{
@@ -63,6 +63,7 @@ const ChartComponents = () => {
                         left: 40,
                         bottom: 20,
                     }}
+              
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
